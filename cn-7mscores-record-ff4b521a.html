@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>7m比分｜稳定入口与信息面板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fef3e7 0%, #fbdecf 45%, #f9cdba 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #2b2b2b;
+        }
+        .page-wrapper {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* 主视觉卡片 */
+        .hero-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2.2rem 2.5rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 12px 30px rgba(160, 90, 60, 0.15);
+            transition: box-shadow 0.25s;
+            text-align: center;
+        }
+        .hero-card h1 {
+            font-size: 2.6rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #b4633a, #d47b4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.4rem;
+        }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: #6f4b33;
+            background: #fbf1ea;
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 450;
+            letter-spacing: 0.3px;
+        }
+        .hero-desc {
+            margin-top: 1.2rem;
+            font-size: 1.05rem;
+            color: #3e2d22;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.2rem;
+        }
+        .info-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 8px 20px rgba(150, 80, 50, 0.08);
+            transition: transform 0.18s, box-shadow 0.2s;
+        }
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(150, 80, 50, 0.12);
+        }
+        .card-icon {
+            display: inline-block;
+            font-size: 2.2rem;
+            line-height: 1;
+            margin-bottom: 0.6rem;
+        }
+        .info-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #753f25;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        .info-card p, .info-card ul {
+            font-size: 0.96rem;
+            color: #3f352e;
+        }
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .info-card li {
+            padding: 0.25rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .info-card li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #c57347;
+        }
+
+        /* 适合人群卡片 */
+        .audience-badge-set {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+        .audience-badge {
+            background: #f7e8de;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #5c3b27;
+            font-weight: 480;
+        }
+
+        /* 段落 + 自然链接 */
+        .link-paragraph {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 16px rgba(140, 75, 45, 0.06);
+        }
+        .link-paragraph p {
+            margin-bottom: 0.8rem;
+            font-size: 1.02rem;
+        }
+        .link-paragraph p:last-child {
+            margin-bottom: 0;
+        }
+        .inline-link {
+            color: #b85a2c;
+            font-weight: 550;
+            text-decoration: none;
+            border-bottom: 1.5px solid #e4b79b;
+            padding-bottom: 1px;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .inline-link:hover {
+            color: #843d1b;
+            border-bottom-color: #843d1b;
+        }
+
+        /*  FAQ 摘要卡片 */
+        .faq-mini {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 2rem 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 6px 16px rgba(140, 75, 45, 0.06);
+        }
+        .faq-mini h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #753f25;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f3e2d7;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 540;
+            color: #4d321f;
+        }
+        .faq-a {
+            color: #4a3a30;
+            margin-top: 0.15rem;
+            font-size: 0.95rem;
+        }
+
+        /* 提示条 */
+        .notice-strip {
+            background: rgba(255, 245, 235, 0.75);
+            backdrop-filter: blur(2px);
+            border-radius: 60px;
+            padding: 0.8rem 1.6rem;
+            font-size: 0.9rem;
+            color: #4e3829;
+            text-align: center;
+            width: fit-content;
+            margin: 0 auto 2rem;
+            border: 1px solid #edd6c4;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body { padding: 1rem 0.8rem; }
+            .hero-card { padding: 1.6rem 1.2rem; }
+            .hero-card h1 { font-size: 2rem; }
+            .card-grid { gap: 1rem; }
+            .info-card { padding: 1.4rem 1.2rem; }
+            .link-paragraph { padding: 1.4rem 1.2rem; }
+            .faq-mini { padding: 1.4rem 1.2rem; }
+            .hero-sub { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- 主视觉 -->
+    <div class="hero-card">
+        <h1>7m比分</h1>
+        <div class="hero-sub">⚡ 稳定 · 即时 · 清晰</div>
+        <div class="hero-desc">
+            一个专注赛事数据呈现的简洁面板，提供比分、赛程与关键统计的快速入口。<br>
+            不堆砌信息，只做可靠的实时比分参考。
+        </div>
+    </div>
+
+    <!-- 用途卡片 + 适合人群（混合网格） -->
+    <div class="card-grid">
+        <!-- 卡片1：用途 -->
+        <div class="info-card">
+            <div class="card-icon">📋</div>
+            <h3>用途焦点</h3>
+            <ul>
+                <li>即时比分与赛程一览</li>
+                <li>赛事列表与阶段筛选</li>
+                <li>数据面板 · 无过度动效</li>
+                <li>轻量加载，适合快速查阅</li>
+            </ul>
+        </div>
+        <!-- 卡片2：适合人群 -->
+        <div class="info-card">
+            <div class="card-icon">👥</div>
+            <h3>适合人群</h3>
+            <p style="margin-bottom: 0.5rem;">关注赛事进程、需要简洁信息入口的用户：</p>
+            <div class="audience-badge-set">
+                <span class="audience-badge">⚽ 球类爱好者</span>
+                <span class="audience-badge">📊 数据查看者</span>
+                <span class="audience-badge">🕒 快速参考者</span>
+                <span class="audience-badge">🧭 稳定入口需求</span>
+            </div>
+        </div>
+        <!-- 卡片3：场景简述 -->
+        <div class="info-card">
+            <div class="card-icon">🏟️</div>
+            <h3>典型场景</h3>
+            <ul>
+                <li>赛中日程快速浏览</li>
+                <li>多场比分并行参考</li>
+                <li>移动端轻量查询</li>
+                <li>过渡期信息确认</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 -->
+    <div class="link-paragraph">
+        <p>
+            如果你正在寻找一个指向赛事比分的稳定入口，<a href="https://cn-7mscores.com" class="inline-link">7m比分</a> 
+            以朴素的列表和赛程结构呈现信息，没有额外弹窗或过度动效。页面注重读取效率，适合在比赛日快速浏览多场次数据。
+        </p>
+        <p>
+            从联赛列表到具体对阵，层次相对简单。对于只需要比分和基础统计的用户来说，<a href="https://cn-7mscores.com" class="inline-link">7m比分</a> 
+            提供了不修饰的原始信息面板，减少干扰。你可以在浏览器直接保留为书签，作为常备参考。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要卡片 -->
+    <div class="faq-mini">
+        <h4>❓ 常见理解</h4>
+        <div class="faq-item">
+            <div class="faq-q">这个页面主要提供什么？</div>
+            <div class="faq-a">即时比分、赛程列表、以及部分基础统计数据，呈现方式偏向信息卡片与列表，无自动刷新弹窗。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">是否需要注册或登录？</div>
+            <div class="faq-a">不需要。页面内容直接可见，不强制账户系统。你打开即可浏览当前比分与赛程。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">移动端浏览体验如何？</div>
+            <div class="faq-a">卡片与列表自适应，布局随屏幕宽度调整，字体和触控间距均针对小屏优化。</div>
+        </div>
+    </div>
+
+    <!-- 提示条（非链接，仅为说明） -->
+    <div class="notice-strip">
+        ⚡ 本页为信息说明页，实际数据以 <strong>7m比分</strong> 页面为准。
+    </div>
+
+</div>
+</body>
+</html>
