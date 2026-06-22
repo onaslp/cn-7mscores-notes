@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麻将胡了 · 主题说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f3f1ed;
+            font-family: "Noto Serif SC", "Source Han Serif SC", "思源宋体", Georgia, "Times New Roman", serif;
+            color: #2c2b28;
+            line-height: 1.8;
+            padding: 3rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 680px;
+            width: 100%;
+            background-color: #faf9f6;
+            padding: 3.2rem 2.2rem;
+            border-radius: 28px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 0.25rem;
+            color: #1f1e1b;
+            line-height: 1.3;
+            border-left: 4px solid #c9ad7f;
+            padding-left: 1rem;
+        }
+
+        .subhead {
+            font-size: 0.95rem;
+            color: #7a766e;
+            margin-bottom: 2.4rem;
+            padding-left: 1.4rem;
+            border-bottom: 1px solid #e5e0d6;
+            padding-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin: 2.4rem 0 0.8rem;
+            color: #3b3934;
+            letter-spacing: 0.5px;
+            border-bottom: 1px dashed #d6d0c6;
+            padding-bottom: 0.4rem;
+        }
+
+        p {
+            margin-bottom: 1.4rem;
+            text-align: justify;
+            font-size: 1rem;
+            color: #3c3a35;
+        }
+
+        .intro-card {
+            background: #f6f3ee;
+            padding: 1.6rem 1.8rem;
+            border-radius: 20px;
+            margin: 1.8rem 0 1rem;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        ul {
+            list-style: none;
+            margin: 1rem 0 1.6rem;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.6rem;
+            margin-bottom: 0.7rem;
+            font-size: 0.98rem;
+            color: #3c3a35;
+        }
+
+        li::before {
+            content: "◆";
+            position: absolute;
+            left: 0;
+            color: #b89b72;
+            font-size: 0.7rem;
+            top: 0.25rem;
+        }
+
+        .scene-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.6rem;
+            margin: 0.8rem 0 1.6rem;
+        }
+
+        .scene-item {
+            flex: 1 1 160px;
+            background: #f8f6f1;
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+            border: 1px solid #e7e1d8;
+            font-size: 0.95rem;
+            color: #3b3934;
+        }
+
+        .scene-item strong {
+            display: block;
+            font-weight: 500;
+            color: #5a4f3e;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .tip-box {
+            background: #edeae3;
+            border-radius: 20px;
+            padding: 1.4rem 1.6rem;
+            margin: 2rem 0 1.6rem;
+            font-size: 0.95rem;
+            color: #3d3b36;
+        }
+
+        .tip-box p {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .tip-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-item {
+            margin: 1rem 0;
+            padding: 0.2rem 0;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #4b453b;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            font-size: 0.94rem;
+            color: #5b5750;
+            padding-left: 0.5rem;
+        }
+
+        .link-sentence {
+            margin-top: 2rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid #e2dcd2;
+            font-size: 0.98rem;
+            color: #4f4a43;
+        }
+
+        a {
+            color: #7d684b;
+            text-decoration: none;
+            border-bottom: 1px solid #d4c8b6;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 400;
+        }
+
+        a:hover {
+            color: #4d3f2c;
+            border-bottom-color: #9a886f;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            font-size: 0.8rem;
+            color: #9b958b;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .page {
+                padding: 2rem 1.2rem;
+                border-radius: 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+                padding-left: 0.8rem;
+            }
+            .subhead {
+                padding-left: 1rem;
+                font-size: 0.85rem;
+            }
+            .intro-card {
+                padding: 1.2rem 1.2rem;
+            }
+            .scene-item {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <h1>麻将胡了</h1>
+    <div class="subhead">一场牌局里的节奏与机锋</div>
+
+    <p>在东南西北风之间，每一次摸牌都像翻开一页不确定的叙事。麻将的魅力不只在胜负，更在于牌面流转时那种微妙的判断——什么时候该等，什么时候该换，什么时候该果断推倒。而所有这些时刻，最终都指向同一个念头：<strong>胡牌</strong>。所谓「<a href="https://web-cns-mahjong.com">麻将胡了</a>」，不只是一声宣告，更是整局博弈中最清晰的句点。</p>
+
+    <div class="intro-card">
+        <p>这个站点谈论的并非某一种特定打法，而是围绕麻将本身展开的思考与记录。从牌型概率到读牌思路，从地方规则差异到心理层面的进退，内容更偏向一种温和的梳理——帮助参与者更从容地面对每一局，无论你是初学者还是久坐牌桌的熟手。</p>
+        <p>没有速成秘籍，也不鼓吹必胜法。这里更愿意把麻将看作一种需要耐心与观察的桌面游戏，有时候信息比运气更值得信赖。</p>
+    </div>
+
+    <h2>几点值得留意的内容方向</h2>
+    <ul>
+        <li>常见牌型的构成逻辑与拆解思路，不只背番种，更理解组合的来由。</li>
+        <li>不同地域规则的差异整理，尤其是番种认定与胡牌门槛的变化。</li>
+        <li>读牌与防守的简单原则——并非教人算牌，而是学习观察场上出牌模式。</li>
+        <li>牌局心态的短篇随笔：连续点炮之后、听牌不胡之时，如何不被情绪带走。</li>
+    </ul>
+
+    <h2>适合的场景</h2>
+    <div class="scene-row">
+        <div class="scene-item">
+            <strong>周末小聚</strong>
+            朋友之间四圈牌，想打得更明白一些，又不失轻松气氛。
+        </div>
+        <div class="scene-item">
+            <strong>规则学习</strong>
+            刚接触某个地方规则，想提前了解番种体系和常见胡牌类型。
+        </div>
+        <div class="scene-item">
+            <strong>独自复盘</strong>
+            打完一局后，对着牌谱慢慢回想，哪一手还有更优选择。
+        </div>
+    </div>
+
+    <h2>一些很实际的提醒</h2>
+    <div class="tip-box">
+        <p>不论是线上还是线下，麻将始终是带有随机性的游戏。再细致的分析也无法消除运气的成分，这一点值得平常心对待。</p>
+        <p>不要沉迷所谓“必胜口诀”，真正的提高往往来自对每一局的诚实回顾，而非机械套用套路。</p>
+        <p>如果是为了休闲娱乐，不妨把胜负看淡一些，把牌桌上的交流看得重一些——很多有意思的谈资都发生在洗牌的间隙里。</p>
+    </div>
+
+    <h2>常见疑问简述</h2>
+    <div class="faq-item">
+        <div class="faq-q">— 这里的内容适合哪种水平的玩家？</div>
+        <div class="faq-a">多数文章偏向中轻度阅读，新手能获得基础框架，有经验的玩家也能找到可琢磨的细节。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">— 是否有针对比赛或竞技麻将的内容？</div>
+        <div class="faq-a">目前以大众休闲规则为主，偶尔涉及竞技向思路，但并非核心方向。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">— 内容更新频率如何？</div>
+        <div class="faq-a">不定期，但每一篇都经过整理，不追求数量，只希望言之有物。</div>
+    </div>
+
+    <div class="link-sentence">
+        如果你也习惯在牌局间隙琢磨那些细微的取舍，不妨去 <a href="https://web-cns-mahjong.com">麻将胡了</a> 看看——那里记录了一些安静而实在的牌桌笔记。
+    </div>
+
+    <div class="footer-note">
+        保持耐心 · 牌如其人
+    </div>
+</div>
+</body>
+</html>
